@@ -3,7 +3,9 @@ liens vedios: https://drive.google.com/drive/folders/1Zd9fIM0qbjTM7ebx1mn8ZMEeGf
 # ProjetP1_Tri_Robot
 
 ## Description
-Ce projet consiste à développer un système robotisé utilisant un bras robotique Kuka iiwa et une caméra Realsense pour détecter et manipuler des objets. Le traitement d'image et la détection des objets sont réalisés avec Python 3 et OpenCV, tandis que la communication avec le robot se fait via le logiciel de programmation Sunrise et le langage Java.
+Ce projet vise à développer un système robotisé automatisé en utilisant un bras robotique Kuka iiwa et une caméra Realsense pour la détection, le tri et la manipulation d'objets. Le système combine du code Python et Java pour effectuer la détection d'objets, la communication entre les logiciels, et le contrôle du robot. 
+
+Le flux de travail principal inclut l'identification d'objets, l'estimation de leur pose et l'envoi des données pertinentes au robot via un protocole de communication TCP. Une fois les objets triés et manipulés, le robot envoie une commande de fin de tâche pour relancer un nouveau cycle de détection, permettant ainsi un fonctionnement automatisé.
 
 ## Matériels
 - **Robotique** :
@@ -15,10 +17,13 @@ Ce projet consiste à développer un système robotisé utilisant un bras roboti
   - Visiocode (outil pour la gestion de la communication et des programmes)
 
 ## Fonctionnalités principales
-1. **Détection des objets** : Identification de formes (cubes, cylindres, etc.) et couleurs spécifiques à l'aide de la caméra Realsense.
-2. **Estimation de la pose** : Calcul des coordonnées (XYZ) des objets détectés.
-3. **Envoi des données via TCP** : Transfert des informations sur les objets détectés au robot pour exécution des actions.
-4. **Calcul et affichage de l'angle de rotation** : Pour les objets de forme carrée, le système calcule l'angle de rotation.
+1. **Détection des objets** : Le programme Python utilise la caméra Realsense pour identifier les formes (cubes, cylindres, etc.) et les couleurs spécifiques des objets.
+2. **Estimation de la pose** : Les coordonnées XYZ, la couleur, la forme et l'angle de rotation des objets sont calculés.
+3. **Transmission des données via TCP** : Les données sont envoyées au robot Kuka via Java/Sunrise, incluant les informations sur les objets (position, forme, couleur, angle).
+4. **Réception des commandes du robot** : Un script Python est automatiquement lancé pour recevoir les instructions de fin de programme envoyées par le robot Kuka. Une fois la tâche terminée, il redémarre le processus de détection, permettant l'automatisation du tri des objets.
+5. **Calibration des coordonnées** : Les coordonnées des objets par rapport à la caméra sont transformées en coordonnées relatives au bras robotique via un code de calibration.
+6. **Interface utilisateur** : Une interface permet aux utilisateurs humains de sélectionner manuellement la priorité de traitement des objets selon leur couleur ou type, avant que le programme ne réalise les tâches de tri en conséquence.
+7. **Automatisation** : Tout le processus est automatisé, avec des cycles continus de détection et manipulation d'objets, déclenchés par des messages TCP entre le robot et le programme Python.
 
 ## Installation
 1. Cloner le dépôt :
