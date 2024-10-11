@@ -23,7 +23,7 @@ Le flux de travail principal inclut l'identification d'objets, l'estimation de l
 4. **Réception des commandes du robot** : Un script Python est automatiquement lancé pour recevoir les instructions de fin de programme envoyées par le robot Kuka. Une fois la tâche terminée, il redémarre le processus de détection, permettant l'automatisation du tri des objets.
 5. **Calibration des coordonnées** : Les coordonnées des objets par rapport à la caméra sont transformées en coordonnées relatives au bras robotique via un code de calibration.
 6. **Interface utilisateur** : Une interface permet aux utilisateurs humains de sélectionner manuellement la priorité de traitement des objets selon leur couleur ou type, avant que le programme ne réalise les tâches de tri en conséquence.
-7. **Automatisation** : Tout le processus est automatisé, avec des cycles continus de détection et manipulation d'objets, déclenchés par des messages TCP entre le robot et le programme Python.
+7. **Automatisation** : Sauf l'interface utilisateur. Tout le processus est automatisé, avec des cycles continus de détection et manipulation d'objets, déclenchés par des messages TCP entre le robot et le programme Python.
 
 ## Installation
 1. Cloner le dépôt :
